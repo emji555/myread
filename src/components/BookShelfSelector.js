@@ -1,8 +1,9 @@
 import React from "react";
 
-import { PropTypes } from "prop-types";
+import { object, PropTypes } from "prop-types";
 
 const BookShelfSelector = ({ book, handleUpdateShelf }) => {
+  
 
   const handleUpdateBookShelf = (e) => {
 
@@ -10,17 +11,27 @@ const BookShelfSelector = ({ book, handleUpdateShelf }) => {
 
     handleUpdateShelf(book, value);
 
+    const shelvesList = [{id:"1", shelfName:"currentlyReading",shelfDisplayName:"Currently Reading"},
+    {id:"2", shelfName:"wantToRead",shelfDisplayName:"Want to Read"},
+    {id:"3", shelfName:"read",shelfDisplayName:"Read"},
+    {id:"4", shelfName:"none",shelfDisplayName:"None"},
+   
+  ];
+ 
 
   };
 
   return (
+    
 
     <select
       onChange={handleUpdateBookShelf}
       value={book.shelf ? book.shelf : "none"}
+      
+      
     >
 
-      <option value="none" disabled>
+      <option  disabled>
         Move to...
       </option>
       <option value="currentlyReading">Currently Reading</option>
@@ -29,6 +40,7 @@ const BookShelfSelector = ({ book, handleUpdateShelf }) => {
       <option value="none">None</option>
 
     </select>
+    
   );
 
 };
